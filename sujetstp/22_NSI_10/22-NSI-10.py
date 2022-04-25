@@ -1,4 +1,13 @@
-def occurence(phrase)
+def occurence(phrase):
+    dico={}
+    for i in phrase:
+        if i in dico.keys():
+            dico[i]+=1
+        else: dico[i] = 1
+    return dico
+
+print(occurence("test"))
+
 
 def fusion(L1,L2):
     n1 = len(L1)

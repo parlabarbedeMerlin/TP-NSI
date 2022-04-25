@@ -1,3 +1,11 @@
+def recherche(tab, n):
+    for i in range(len(tab)):
+        if tab[i] == n:
+            return i
+    return -1
+
+print(recherche([2, 3, 4, 5, 6], 5))
+
 ALPHABET='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 def position_alphabet(lettre):
@@ -5,10 +13,11 @@ def position_alphabet(lettre):
 
 def cesar(message, decalage):
     resultat = ''
-    for ... in message :
+    for lettre in message :
         if lettre in ALPHABET :
-            indice = ( ... )%26
+            indice = (position_alphabet(lettre)+decalage)%26
             resultat = resultat + ALPHABET[indice]
         else:
-            resultat = ...
+            resultat = resultat + lettre
     return resultat
+print(cesar('BONJOUR A TOUS. VIVE LA MATIERE NSI !',4))
