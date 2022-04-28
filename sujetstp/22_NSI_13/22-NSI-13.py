@@ -1,3 +1,16 @@
+def rendu(nb):
+    arendre = []
+    if nb>5:
+        arendre.append(nb//5)
+        nb-=(nb//5)*5
+    if nb>2:
+        arendre.append(nb//2)
+        nb-=(nb//2)*2
+    arendre.append(nb)
+    return arendre
+print(rendu(89))
+
+
 class Maillon :
     def __init__(self,v) :
         self.valeur = v
@@ -8,18 +21,18 @@ class File :
         self.dernier_file = None
 
     def enfile(self,element) :
-        nouveau_maillon = Maillon(...) 
+        nouveau_maillon = Maillon(element)
         nouveau_maillon.suivant = self.dernier_file
-        self.dernier_file = ...
+        self.dernier_file =nouveau_maillon
 
     def est_vide(self) :
         return self.dernier_file == None
 
     def affiche(self) :
         maillon = self.dernier_file
-        while maillon != ... :
+        while maillon != None :
             print(maillon.valeur)
-            maillon = ...
+            maillon = maillon.suivant
 
     def defile(self) :
         if not self.est_vide() :
@@ -27,10 +40,22 @@ class File :
                 resultat = self.dernier_file.valeur
                 self.dernier_file = None
                 return resultat
-            maillon = ...
+            maillon = self.dernier_file
             while maillon.suivant.suivant != None :
                 maillon = maillon.suivant
-            resultat = ...
+            resultat = maillon.suivant.valeur
             maillon.suivant = None
             return resultat
         return None 
+
+F = File()
+print(F.est_vide())
+F.enfile(2)
+F.affiche()
+print(F.est_vide())
+F.enfile(5)
+F.enfile(7)
+F.affiche()
+print(F.defile())
+print(F.defile())
+F.affiche()
